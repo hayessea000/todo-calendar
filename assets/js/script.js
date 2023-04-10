@@ -16,6 +16,7 @@ let times = [
 
 function makeTimeBlocks(){
     for (let i= 0; i<times.length; i++){
+        let dayBlock= $(".dayBlock")
         let rowDiv= $("<div>")
         rowDiv.addClass("row time-block")
         rowDiv.attr("id", times[i].id)
@@ -24,9 +25,9 @@ function makeTimeBlocks(){
         blockTimeDiv.addClass("col-2 col-md-1 hour text-center py-3")
         blockTimeDiv.text(times[i].blockTime)
 
-        let textarea =$("<textarea>")
-        textarea.addClass("col-8 col-md-10 description")
-        textarea.attr("rows", "3")
+        let textAreaDiv =$("<textarea>")
+        textAreaDiv.addClass("col-8 col-md-10 description")
+        textAreaDiv.attr("rows", "3")
 
         let saveButtonDiv= $("<button>")
         saveButtonDiv.addClass("btn saveBtn col-2 col-md-1")
@@ -36,12 +37,18 @@ function makeTimeBlocks(){
         let iDiv= $("<i>")
         iDiv.addClass("fas fa-save")
         iDiv.attr("aria-hidden", "true")
+
+
+
+        dayBlock.append(rowDiv)
+        rowDiv.append(blockTimeDiv, textAreaDiv, saveButtonDiv)
+        saveButtonDiv.append(iDiv)
     }
 }
 
 
 
-
+makeTimeBlocks()
 
 
 
