@@ -44,6 +44,13 @@ function makeTimeBlocks(){
         dayBlock.append(rowDiv)
         rowDiv.append(blockTimeDiv, textAreaDiv, saveButtonDiv)
         saveButtonDiv.append(iDiv)
+        saveButtonDiv.on("click", function(event){
+            dayBlock.innerHTML = "";
+            console.log("hello")
+            saveDay= [nine.val(),ten.val(),eleven.val(),twelve.val(),one.val(),two.val(),three.val(),four.val(),five.val()]
+            localStorage.setItem("todo", JSON.stringify(saveDay));
+            console.log(saveDay)
+        })
     }
     let nine =$("#hour-9 .description")
     let ten =$("#hour-10 .description")
@@ -61,22 +68,13 @@ function makeTimeBlocks(){
             blocks[i].val(saveDay[i])
         }
     }
-    saveDay= [nine.val(),ten.val(),eleven.val(),twelve.val(),one.val(),two.val(),three.val(),four.val(),five.val()]
-    console.log(saveDay)
     
-    localStorage.setItem("todo", JSON.stringify(saveDay));
-
+    
 }
 makeTimeBlocks()
 
-// for (var i=0; i<saveDay.length; i++){
-
-// }
 
 
-$("saveBtn").on("click", function(event){
-    
-})
 
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
