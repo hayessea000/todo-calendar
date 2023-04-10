@@ -28,7 +28,8 @@ function makeTimeBlocks(){
         let textAreaDiv =$("<textarea>")
         textAreaDiv.addClass("col-8 col-md-10 description")
         textAreaDiv.attr("rows", "3")
-
+        // textAreaDiv.val("hello")
+// gfhfghfghfghdf
         let saveButtonDiv= $("<button>")
         saveButtonDiv.addClass("btn saveBtn col-2 col-md-1")
         saveButtonDiv.attr("id", "saveMe")
@@ -44,19 +45,34 @@ function makeTimeBlocks(){
         rowDiv.append(blockTimeDiv, textAreaDiv, saveButtonDiv)
         saveButtonDiv.append(iDiv)
     }
+    let nine =$("#hour-9 .description")
+    let ten =$("#hour-10 .description")
+    let eleven =$("#hour-11 .description")
+    let twelve =$("#hour-12 .description")
+    let one =$("#hour-13 .description")
+    let two =$("#hour-14 .description")
+    let three =$("#hour-15 .description")
+    let four =$("#hour-16 .description")
+    let five =$("#hour-17 .description")
+    let saveDay = JSON.parse(localStorage.getItem("todo"));
+    let blocks =[nine,ten,eleven,twelve,one,two,three,four,five]
+    if (saveDay!=null){
+        for(let i=0; i<saveDay.length; i++){
+            blocks[i].val(saveDay[i])
+        }
+    }
+    saveDay= [nine.val(),ten.val(),eleven.val(),twelve.val(),one.val(),two.val(),three.val(),four.val(),five.val()]
+    console.log(saveDay)
+    
+    localStorage.setItem("todo", JSON.stringify(saveDay));
+
 }
 makeTimeBlocks()
-let nine =$("#hour-9 .description")
-let ten =$("#hour-10 .description")
-let eleven =$("#hour-11 .description")
-let twelve =$("#hour-12 .description")
-let one =$("#hour-13 .description")
-let two =$("#hour-14 .description")
-let three =$("#hour-15 .description")
-let four =$("#hour-16 .description")
-let five =$("#hour-17 .description")
-let saveDay= [nine.text(),ten.text(),eleven.text(),twelve.text(),one.text(),two.text(),three.text(),four.text(),five.text()]
-console.log(saveDay)
+
+// for (var i=0; i<saveDay.length; i++){
+
+// }
+
 
 $("saveBtn").on("click", function(event){
     
