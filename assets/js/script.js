@@ -1,6 +1,50 @@
 let today= dayjs();
 $("#currentDay").text(today.format('dddd, MMMM D YYYY'));
 
+let times = [
+    {blockTime: "9am", timeValue: 9, id: "hour-9"},
+    {blockTime: "10am", timeValue: 10, id: "hour-10"},
+    {blockTime: "11am", timeValue: 11, id: "hour-11"},
+    {blockTime: "12pm", timeValue: 12, id: "hour-12"},
+    {blockTime: "1am", timeValue: 13, id: "hour-13"},
+    {blockTime: "2am", timeValue: 14, id: "hour-14"},
+    {blockTime: "3am", timeValue: 15, id: "hour-15"},
+    {blockTime: "4am", timeValue: 16, id: "hour-16"},
+    {blockTime: "5am", timeValue: 17, id: "hour-17"},
+]
+
+
+function makeTimeBlocks(){
+    for (let i= 0; i<times.length; i++){
+        let rowDiv= $("<div>")
+        rowDiv.addClass("row time-block")
+        rowDiv.attr("id", times[i].id)
+
+        let blockTimeDiv= $("<div>")
+        blockTimeDiv.addClass("col-2 col-md-1 hour text-center py-3")
+        blockTimeDiv.text(times[i].blockTime)
+
+        let textarea =$("<textarea>")
+        textarea.addClass("col-8 col-md-10 description")
+        textarea.attr("rows", "3")
+
+        let saveButtonDiv= $("<button>")
+        saveButtonDiv.addClass("btn saveBtn col-2 col-md-1")
+        saveButtonDiv.attr("id", "save-button")
+        saveButtonDiv.attr("aria-label", "save")
+
+        let iDiv= $("<i>")
+        iDiv.addClass("fas fa-save")
+        iDiv.attr("aria-hidden", "true")
+    }
+}
+
+
+
+
+
+
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
