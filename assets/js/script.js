@@ -31,7 +31,7 @@ function makeTimeBlocks(){
 
         let saveButtonDiv= $("<button>")
         saveButtonDiv.addClass("btn saveBtn col-2 col-md-1")
-        saveButtonDiv.attr("id", "save-button")
+        saveButtonDiv.attr("id", "saveMe")
         saveButtonDiv.attr("aria-label", "save")
 
         let iDiv= $("<i>")
@@ -45,11 +45,22 @@ function makeTimeBlocks(){
         saveButtonDiv.append(iDiv)
     }
 }
-
-
-
 makeTimeBlocks()
+let nine =$("#hour-9 .description")
+let ten =$("#hour-10 .description")
+let eleven =$("#hour-11 .description")
+let twelve =$("#hour-12 .description")
+let one =$("#hour-13 .description")
+let two =$("#hour-14 .description")
+let three =$("#hour-15 .description")
+let four =$("#hour-16 .description")
+let five =$("#hour-17 .description")
+let saveDay= [nine.text(),ten.text(),eleven.text(),twelve.text(),one.text(),two.text(),three.text(),four.text(),five.text()]
+console.log(saveDay)
 
+$("saveBtn").on("click", function(event){
+    
+})
 
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
@@ -76,3 +87,5 @@ $(function () {
     // TODO: Add code to display the current date in the header of the page.
   });
   
+
+
