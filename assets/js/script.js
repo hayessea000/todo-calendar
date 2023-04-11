@@ -1,16 +1,18 @@
 let today= dayjs();
-$("#currentDay").text(today.format('dddd, MMMM D YYYY'));
+$("#currentDay").text(today.format("dddd, MMMM D YYYY"));
+let hour= today.format("H")
+console.log(hour)
 
 let times = [
     {blockTime: "9am", timeValue: 9, id: "hour-9"},
     {blockTime: "10am", timeValue: 10, id: "hour-10"},
     {blockTime: "11am", timeValue: 11, id: "hour-11"},
     {blockTime: "12pm", timeValue: 12, id: "hour-12"},
-    {blockTime: "1am", timeValue: 13, id: "hour-13"},
-    {blockTime: "2am", timeValue: 14, id: "hour-14"},
-    {blockTime: "3am", timeValue: 15, id: "hour-15"},
-    {blockTime: "4am", timeValue: 16, id: "hour-16"},
-    {blockTime: "5am", timeValue: 17, id: "hour-17"},
+    {blockTime: "1pm", timeValue: 13, id: "hour-13"},
+    {blockTime: "2pm", timeValue: 14, id: "hour-14"},
+    {blockTime: "3pm", timeValue: 15, id: "hour-15"},
+    {blockTime: "4pm", timeValue: 16, id: "hour-16"},
+    {blockTime: "5pm", timeValue: 17, id: "hour-17"},
 ]
 
 
@@ -20,26 +22,26 @@ function makeTimeBlocks(){
         let rowDiv= $("<div>")
         rowDiv.addClass("row time-block")
         rowDiv.attr("id", times[i].id)
-
+        if (times[i].timeValue>hour){
+            rowDiv.addClass("future")
+        }else if (times[i].timeValue<hour){
+            rowDiv.addClass("past")
+        }else if (times[i].timeValue==hour){
+            rowDiv.addClass("present")
+        }
         let blockTimeDiv= $("<div>")
         blockTimeDiv.addClass("col-2 col-md-1 hour text-center py-3")
         blockTimeDiv.text(times[i].blockTime)
-
         let textAreaDiv =$("<textarea>")
         textAreaDiv.addClass("col-8 col-md-10 description")
         textAreaDiv.attr("rows", "3")
-        // textAreaDiv.val("hello")
-// gfhfghfghfghdf
         let saveButtonDiv= $("<button>")
         saveButtonDiv.addClass("btn saveBtn col-2 col-md-1")
         saveButtonDiv.attr("id", "saveMe")
         saveButtonDiv.attr("aria-label", "save")
-
         let iDiv= $("<i>")
         iDiv.addClass("fas fa-save")
         iDiv.attr("aria-hidden", "true")
-
-
 
         dayBlock.append(rowDiv)
         rowDiv.append(blockTimeDiv, textAreaDiv, saveButtonDiv)
@@ -68,8 +70,6 @@ function makeTimeBlocks(){
             blocks[i].val(saveDay[i])
         }
     }
-    
-    
 }
 makeTimeBlocks()
 
