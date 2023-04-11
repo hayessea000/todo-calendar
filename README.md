@@ -37,4 +37,4 @@ The webpage will load up any saved data from previous uses. Click the time block
 
 ## Webpage
 https://hayessea000.github.io/todo-calendar/
-![Here's a screenshot of the full webpage](./assets/images/coding-quiz_index.html.png)
+![Here's a screenshot of the full webpage](./assets/images/todo-calendar_index.html.png)
